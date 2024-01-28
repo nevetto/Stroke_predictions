@@ -17,7 +17,7 @@ list_of_files= [
     f"src/pipeline/__init__.py",
     f"src/pipeline/predict_pipeline.py",
     f"src/utils.py",
-    f"src/exemption.py",
+    f"src/exception.py",
     f"src/logger.py",
     "config/config.yaml",
     "dvc.yaml",
