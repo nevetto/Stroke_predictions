@@ -30,7 +30,7 @@ class DataTransformation:
         '''
         try:
             self.numerical_columns = ['age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi']
-            categorical_columns = ['gender', 'ever_married', 'work_type', 'Residence_type','smoking_status']
+            self.categorical_columns = ['gender', 'ever_married', 'work_type', 'Residence_type','smoking_status',]
             
             num_pipeline= Pipeline(
                 steps=[
@@ -43,19 +43,19 @@ class DataTransformation:
             cat_pipeline=Pipeline(
 
                 steps=[
-                ("one_hot_encoder",OneHotEncoder()),
+                ("one_hot_encoder",OneHotEncoder(handle_unknown = "ignore")),
                 ("scaler",StandardScaler(with_mean=False))
                 ]
 
             )
 
-            logging.info(f"Categorical columns: {categorical_columns}")
+            logging.info(f"Categorical columns: {self.categorical_columns}")
             logging.info(f"Numerical columns: {self.numerical_columns}")
 
             preprocessor=ColumnTransformer(
                 [
                 ("num_pipeline",num_pipeline,self.numerical_columns),
-                ("cat_pipelines",cat_pipeline,categorical_columns)
+                ("cat_pipelines",cat_pipeline,self.categorical_columns)
 
                 ]
 
@@ -79,14 +79,16 @@ class DataTransformation:
 
             preprocessing_obj=self.get_data_transformer_object()
 
-            target_column_name=["stroke"]
+            target_column_name="stroke"
+            id_column = "id"
             self.numerical_columns=['age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi']
 
-            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
+            input_feature_train_df=train_df.drop(columns=([target_column_name, id_column]),axis=1)
             target_feature_train_df=train_df[target_column_name]
 
-            input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
-            target_feature_test_df=test_df[target_column_name]        
+            input_feature_test_df=test_df.drop(columns=([target_column_name, id_column]),axis=1)
+            target_feature_test_df=test_df[target_column_name]  
+            print(input_feature_test_df)      
             
 
             logging.info(
@@ -101,8 +103,13 @@ class DataTransformation:
                 f"Applying preprocessing object on training dataframe and testing dataframe."
             )
 
-            input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
+            input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df) 
+           
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
+            
+           
+            
+            
 
             train_arr = np.c_[
                 input_feature_train_arr, np.array(target_feature_train_df)
