@@ -34,7 +34,7 @@ class DataTransformation:
             
             num_pipeline= Pipeline(
                 steps=[
-                ("imputer",SimpleImputer(strategy="median")),
+                # ("imputer",SimpleImputer(strategy="median")),
                 ("scaler",StandardScaler())
 
                 ]
@@ -51,6 +51,8 @@ class DataTransformation:
 
             logging.info(f"Categorical columns: {self.categorical_columns}")
             logging.info(f"Numerical columns: {self.numerical_columns}")
+            
+          
 
             preprocessor=ColumnTransformer(
                 [
@@ -74,30 +76,46 @@ class DataTransformation:
             test_df=pd.read_csv(test_path)
 
             logging.info("Read train and test data completed")
+            
+            
 
             logging.info("Obtaining preprocessing object")
 
             preprocessing_obj=self.get_data_transformer_object()
-
+            
+             
             target_column_name="stroke"
-            id_column = "id"
+            id_column = 'id'
+            unknown = 'Unnamed: 0'
             self.numerical_columns=['age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi']
 
-            input_feature_train_df=train_df.drop(columns=([target_column_name, id_column]),axis=1)
+            input_feature_train_df=train_df.drop(columns=([target_column_name, id_column, unknown]),axis=1)
             target_feature_train_df=train_df[target_column_name]
+                  
+                
 
             input_feature_test_df=test_df.drop(columns=([target_column_name, id_column]),axis=1)
             target_feature_test_df=test_df[target_column_name]  
-            print(input_feature_test_df)      
+            print(input_feature_test_df) 
             
-
-            logging.info(
-                f"solving imbalanced dataset"
-            )
+            
+            
+ 
             
             resamp = RandomOverSampler()
             input_feature_train_df, target_feature_train_df = resamp.fit_resample(input_feature_train_df,target_feature_train_df )
             input_feature_test_df, target_feature_test_df = resamp.fit_resample( input_feature_test_df,target_feature_test_df)
+            
+            count_X1 = target_feature_train_df.value_counts()
+            print('this are the values for   balanced data', count_X1)
+            count_X2 = input_feature_train_df.value_counts()
+            print('this are the values for   balanced data', count_X2)
+            
+            logging.info( f"imbalanced dataset has been resolved")
+            
+             
+            
+            
             
             logging.info(
                 f"Applying preprocessing object on training dataframe and testing dataframe."

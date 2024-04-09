@@ -8,4 +8,6 @@ xgboost
 dill
 pycaret
 catboost
--e .
+xgboost
+imbalanced-learn
+# -e .

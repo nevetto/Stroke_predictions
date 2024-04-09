@@ -58,4 +58,10 @@ This dataset is used to predict whether a patient is likely to get stroke based 
 
 Performing EDA (explorative data analysis), model training and predictions
 
+Working on model training
 
+
+# Observation:
+I have imbalanced datasets which was first solved with Resample, but the accuracy was bad.
+
+I tried again by sourcing for additional datasets to bala
