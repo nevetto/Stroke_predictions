@@ -10,4 +10,6 @@ pycaret
 catboost
 xgboost
 imbalanced-learn
-# -e .
+django
+djangorestframework
+-e .

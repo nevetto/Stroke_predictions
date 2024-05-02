@@ -62,6 +62,6 @@ Working on model training
 
 
 # Observation:
-I have imbalanced datasets which was first solved with Resample, but the accuracy was bad.
+I datasets were imbalanced which was first solved with Resample, but the accuracy was bad.
 
 I tried again by sourcing for additional datasets to bala
