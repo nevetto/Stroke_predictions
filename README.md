@@ -60,8 +60,12 @@ Performing EDA (explorative data analysis), model training and predictions
 
 Working on model training
 
+# Framework
+react.js for the frontend and django for the backend.
+
 
 # Observation:
-I datasets were imbalanced which was first solved with Resample, but the accuracy was bad.
+I had imbalanced dataset andd was solved with Resampling method
 
-I tried again by sourcing for additional datasets to bala
+python 3.7 doesn't work with cors_origin, but python 3.8 works.
+

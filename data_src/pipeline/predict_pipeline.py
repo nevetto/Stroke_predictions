@@ -23,10 +23,7 @@ class PredictPipeline:
         except Exception as e:
             raise CustomException(e,sys)
         
-    #     ['Unnamed: 0', 'age', 'hypertension', 'heart_disease',
-    #    'avg_glucose_level', 'bmi', 'Unnamed: 0.1', 'id'],
-    #   dtype='object') ............ Index(['gender', 'ever_married', 'work_type', 'c',
-    #    'smoking_status']
+ 
     
     class CustomData:
         def __init__(self, 
