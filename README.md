@@ -20,14 +20,14 @@ step #3:
 . create __init__.py inside src folder
 . create components folder inside src folder ad create the following files inside componets folder.
     .__init_.py inside components folder
-        #The reason of adding __init__.py is because the folder will be seen as package and can be used else where#
-    . data_ingestion.py ( data ingestion is reading data from)
+        #The reason for adding __init__.py is for the folder to be seen as a package and can be used else where#
+    . data_ingestion.py ( data ingestion is for reading data)
     . data_transfomation.py 
     . model_trainer.py 
-    #All the files created inside componets are for EDA purpose.#
+    #All the files created inside components are for EDA purpose.#
 . pipeline folder inside src folder, then create the following files inside pipeline folder
     . train_pipeline.py (for the training purpose)
-    . predict_pipeline (for sata predictions)
+    . predict_pipeline (for data predictions)
 
 . Create exempton.py, logger.py and utils inside src folder.
 . Create custom exemption in excemption.py
@@ -65,7 +65,7 @@ react.js for the frontend and django for the backend.
 
 
 # Observation:
-I had imbalanced dataset andd was solved with Resampling method
+I had imbalanced dataset and was solved with Resampling method
 
 python 3.7 doesn't work with cors_origin, but python 3.8 works.
 
