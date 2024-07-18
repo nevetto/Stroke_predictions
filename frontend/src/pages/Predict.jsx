@@ -9,9 +9,6 @@ function Predict() {
 
     const [getPred, setgetPred] = useState([]);  
     
-   
-    const [first_name, setFirst_name] = useState('');
-    const [second_name, setSecond_name] =useState('');
     const [Male, setMale] =useState("");
     const [Female, setFemale] =useState("");
     const [ever_married, setEver_married] = useState("");
@@ -41,7 +38,8 @@ function Predict() {
     }, []);
 
     const getPredicts = () => {
-        api.get("/predictions/predict/")
+      api
+        .get("/predictions/predict/")
         .then((res) => res.data)
         .then((data) => {
             setgetPred(data);
@@ -50,9 +48,20 @@ function Predict() {
         .catch((err) => alert(err));
     };
 
+    const deletePredict = (id) => {
+      api
+          .delete(`/predictions/predict/delete/${id}/`)
+          .then((res) => {
+              if (res.status === 204) alert("Prediction deleted!");
+              else alert("Failed to delete.");
+              getPredicts();
+          })
+          .catch((error) => alert(error));
+  };
+
     const createPredicts = (e) => {
       e.preventDefault();
-      api.post("/predictions/predict/", { first_name,second_name,Male,Female, ever_married,Not_married, Govt_job, Private, Self_employed, children, Rural,
+      api.post("/predictions/predict/", {Male,Female, ever_married,Not_married, Govt_job, Private, Self_employed, children, Rural,
         Urban, Unknown_smoke,formerly_smoked,never_smoked,smokes, age,hypertension,heart_disease,avg_glucose_level, bmi }).then((res) => {
           if (res.status === 201) alert("Your Information Has Been Successfully Sent.");
           else alert("Failed to make prediction.");
@@ -72,31 +81,13 @@ function Predict() {
         <div>
           <h2>Predictions</h2>
           { getPred.map((pred) => (
-            <Predicted pred={pred} key={pred.first_name} secondN={pred.second_name} result = {pred.result}/>
+            // <Predicted pred={pred} key={pred.first_name} secondN={pred.second_name} result = {pred.result}/>
+            <Predicted pred={pred}   onDelete={deletePredict} key={pred.id}/>
           ))}
            
         </div>
         <h2>Make Predictions</h2>
-         <form onSubmit={createPredicts}>
-          <label htmlFor="first_name">First Name</label>
-          <input
-              type="text"
-              id="first_name"
-              name="first_name"
-              required
-              onChange={(e) => setFirst_name(e.target.value)}
-              value={first_name}
-          />
-          <label htmlFor='second_name'>Second Name</label>
-          <input
-              type="text"
-              id="second_name"
-              name="second_name"
-              required
-              onChange={(e) => setSecond_name(e.target.value)}
-              value={second_name}
-          />          
-          <h2>Sex Note: Select Yes</h2>
+         <form onSubmit={createPredicts}>         
           <div>
           <label>Male</label>
             

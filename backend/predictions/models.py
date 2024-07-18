@@ -1,21 +1,18 @@
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 import dill
 import pickle
  
 # from cufflinks.ta import dmi
 from sklearn.preprocessing import OneHotEncoder
+from django.contrib.auth.models import User
 import os 
 
 import sys
  
 
-class Predict(models.Model): 
-    first_name = models.CharField(max_length=30,blank=True, null=True)
-    second_name = models.CharField(max_length=30,blank=True, null=True)
-    
-    
-   
+class Predict(models.Model):        
+     
     Male =models.CharField(max_length=20, blank=True, null=True)
     Female =models.CharField(max_length=20, blank=True, null=True)
     ever_married =models.CharField(max_length=30,blank=True, null=True)
@@ -43,6 +40,7 @@ class Predict(models.Model):
     
     
     date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="predict")
      
     
     def save(self, *args, **kwargs):  
@@ -74,12 +72,13 @@ class Predict(models.Model):
         
         self.result= model.predict( enc_ode)
         
+       
          
         
         return super().save(*args, **kwargs)
 
-    class Meta:
-        ordering = ['-date']
+    # class Meta:
+    #     ordering = ['-date']
         
     def __str__(self):
-        return self.first_name 
+        return self.Male

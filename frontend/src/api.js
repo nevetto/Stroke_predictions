@@ -1,4 +1,6 @@
 import axios from "axios";
+import { ACCESS_TOKEN } from "./constants";
+
 // import Predict from "./pages/Predict";
  
 
@@ -6,20 +8,22 @@ import axios from "axios";
 // const cors = require('cors');
 //   Predict.use(cors());
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL 
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
-// api.inte/rceptors.request.use(
-  // (config) => {
-//     const token = localStorage.getItem(ACCESS_TOKEN);
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   }
-// );
+
+
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export default api;

@@ -61,7 +61,7 @@ Performing EDA (explorative data analysis), model training and predictions
 Working on model training
 
 # Framework
-react.js for the frontend and django for the backend.
+react.js with JWT authentiation for the frontend and django for the backend.
 
 
 # Observation:
