@@ -4,7 +4,7 @@ import React from "react";
 
 function Home() {
     return(
-        <div> helloooo </div>
+        <h1> helloooo </h1>
     )
     
 }
