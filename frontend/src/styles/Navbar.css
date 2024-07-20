@@ -4,8 +4,14 @@
     justify-content: space-between;
     align-items: center;
     background: black;
+  
+
 
     padding: 1rem 2rem;
+}
+
+.p__opensans{
+    color: rgb(186, 185, 241);
 }
 
 .app__navbar-links {

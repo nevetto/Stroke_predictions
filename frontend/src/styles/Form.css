@@ -10,6 +10,10 @@
     max-width: 400px;
   }
   
+.form_bg {
+  background-image: url("assets/stroke_doc.jpg");
+}
+
   .form-input {
     width: 90%;
     padding: 10px;

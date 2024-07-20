@@ -1,5 +1,9 @@
 # END TO END STROKE PREDICTION CLASSIFICATION PROJECT.
 
+## Uderstanding the problem statement:
+According to the World Health Organization (WHO) stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
+This dataset is used to predict whether a patient is likely to get stroke based on the input parameters like gender, age, various diseases, and smoking status. Each row in the data provides relavant information about the patient.
+
 # STEPS....
 
 Step #1:
@@ -29,7 +33,7 @@ step #3:
     . train_pipeline.py (for the training purpose)
     . predict_pipeline (for data predictions)
 
-. Create exempton.py, logger.py and utils inside src folder.
+. Create exemption.py, logger.py and utils inside src folder.
 . Create custom exemption in excemption.py
 . create logger for execution, to log error and to trace error lines and execution that is taking place.
 
@@ -52,9 +56,7 @@ https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
 11) smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
 12) stroke: 1 if the patient had a stroke or 0 if not
 
-## Uderstanding the problem statement:
-According to the World Health Organization (WHO) stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
-This dataset is used to predict whether a patient is likely to get stroke based on the input parameters like gender, age, various diseases, and smoking status. Each row in the data provides relavant information about the patient.
+
 
 Performing EDA (explorative data analysis), model training and predictions
 
