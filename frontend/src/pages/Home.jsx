@@ -26,7 +26,7 @@ function Home() {
                 </div>
             </div>
 
-            <p className="home_link"><h2 className="home_content"> Health, they say is wealth. To predict posibility of stroke <span><Link to="/register"> Register </Link>/<Link to="/login"> Login </Link></span></h2> </p>
+            <p className="home_link"><h2 className="home_content"> Health, they say is wealth. To predict posibility of stroke <span><Link className="navbar_items" to="/register"> Register </Link>/<Link className="navbar_items" to="/login"> Login </Link></span></h2> </p>
         </div>
         
     )
