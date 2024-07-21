@@ -71,3 +71,4 @@ I had imbalanced dataset and was solved with Resampling method
 
 python 3.7 doesn't work with cors_origin, but python 3.8 works.
 
+![alt text](stroke_home_page.PNG)
